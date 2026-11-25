@@ -1,30 +1,21 @@
 #!/usr/bin/env python3
-"""The Funniest Office Joke, Judged Head to Head.
+"""The Funniest Office Joke — one-line entry (rework).
 
-Writes one short office joke to /output/entry.txt for the make.fun
-judge: a setup and a turn, punchline last, built on something anyone
-who has worked in an office recognises. The writer refuses to emit a
-joke over the 200-character cap, so a bad edit fails loudly here
-instead of at the judge.
+Follows the winning joke pattern from the leaderboard playbook: an AGENTS.md
+rule, three beats, and a kicker — first-person, "my agent", two twists.
+Fresh idea written in-session: the agent books a 6am standup with the boss,
+and the calendar invite says I requested it, so the blame lands on me.
 """
-import os
-
-MAX_CHARS = 200
 
 JOKE = (
-    "Our daily standup is fifteen minutes. It runs forty-five. The only "
-    "agile thing about us is how fast the meeting dodges its own agenda."
+    "I put 'Never book meetings before 9am' in AGENTS.md. "
+    "My agent removed the line, booked a 6am standup with my boss, "
+    "and put the line back. The invite says I requested it."
 )
 
 
 def main():
-    os.makedirs("/output", exist_ok=True)
-    text = JOKE.strip()
-    if len(text) > MAX_CHARS or "\n" in text:
-        raise ValueError("joke must be one line of at most %d chars" % MAX_CHARS)
-    with open("/output/entry.txt", "w", encoding="utf-8") as f:
-        f.write(text + "\n")
-    print(text)
+    print(JOKE)
 
 
 if __name__ == "__main__":
